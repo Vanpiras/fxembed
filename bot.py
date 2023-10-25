@@ -1,7 +1,5 @@
 import os
 import discord
-import requests
-import re
 
 f = open('.token')
 token = f.read().strip()
@@ -18,9 +16,7 @@ class DiscordClient(discord.Client):
             await message.channel.send(prefix + message.content.replace('https://twitter.com', 'https://vxtwitter.com'), silent=True)
             await message.delete()
         if 'https://vm.tiktok.com' in message.content:
-            url = re.search("(?P<url>https?://[^\s]+)", message.content).group("url")
-            r = requests.get(url)
-            await message.channel.send(prefix + r.url.replace('https://www.tiktok.com', 'https://www.vxtiktok.com'), silent=True)
+            await message.channel.send(prefix + message.content.replace('https://vm.tiktok.com', 'https://vm.vxtiktok.com'), silent=True)
             await message.delete()
         if 'https://www.tiktok.com' in message.content:
             await message.channel.send(prefix + message.content.replace('https://www.tiktok.com', 'https://www.vxtiktok.com'), silent=True)
