@@ -5,7 +5,7 @@ import discord
 f = open('.token')
 token = f.read().strip()
 
-insultes = [ "Nique ta mère", "Ta grosse daronne la chienne", "Grosse pute", "je te déteste", "t'es ban", "/ban", ":koler:"]
+insultes = [ "Nique ta mère", "Ta grosse daronne la chienne", "Grosse pute", "je te déteste", "t'es ban", "/ban", "bachi-bouzouk", "ta putain de race de merde"]
 
 class DiscordClient(discord.Client):
     async def on_ready(self):
