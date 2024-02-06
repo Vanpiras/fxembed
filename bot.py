@@ -38,7 +38,7 @@ class DiscordClient(discord.Client):
         low = message.content.lower()
         if is_banlisted(low):
             for word in banlist:
-                if low.startswith(word) or low.endswith(" " + word) or " " + word + " " in low:
+                if low.startswith(word) or low.endswith(" " + word) or (" " + word + " ") in low:
             await message.channel.send(insultes[random.randint(0, len(insultes) - 1)])
 
 
