@@ -7,6 +7,14 @@ token = f.read().strip()
 
 insultes = [ "Nique ta mère", "Ta grosse daronne la chienne", "Grosse pute", "je te déteste", "t'es ban", "/ban", "bachi-bouzouk", "ta putain de race de merde"]
 
+banlist = ["feur", "coubeh", "apagnan"]
+
+def is_banlisted(msg):
+    for word in banlist:
+        if word in msg:
+            return True
+    return False
+
 class DiscordClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -27,7 +35,10 @@ class DiscordClient(discord.Client):
         if 'https://instagram.com' in message.content:
             await message.channel.send(prefix + message.content.replace('https://instagram.com', 'https://ddinstagram.com'), silent=True)
             await message.delete()
-        if message.content == 'feur' or message.content == "Feur" or message.content.endswith(" feur"):
+        low = message.content.lower()
+        if is_banlisted(low):
+            for word in banlist:
+                if low.startswith(word) or low.endswith(" " + word) or " " + word + " " in low:
             await message.channel.send(insultes[random.randint(0, len(insultes) - 1)])
 
 
