@@ -5,7 +5,7 @@ import discord
 f = open('.token')
 token = f.read().strip()
 
-insultes = [ "Nique ta mère", "Ta grosse daronne la chienne", "Grosse pute", "je te déteste", "t'es ban", "/ban", "bachi-bouzouk", "ta putain de race de merde"]
+insultes = ["Nique ta mère", "Ta grosse daronne la chienne", "Grosse pute", "je te déteste", "t'es ban", "/ban", "bachi-bouzouk", "ta putain de race de merde"]
 
 banlist = ["feur", "coubeh", "apagnan"]
 
@@ -39,7 +39,7 @@ class DiscordClient(discord.Client):
         if is_banlisted(low):
             for word in banlist:
                 if low.startswith(word) or low.endswith(" " + word) or (" " + word + " ") in low:
-            await message.channel.send(insultes[random.randint(0, len(insultes) - 1)])
+                    await message.channel.send(insultes[random.randint(0, len(insultes) - 1)])
 
 
 intents = discord.Intents.default()
