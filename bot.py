@@ -34,6 +34,8 @@ class DiscordClient(discord.Client):
             await message.delete()
         if 'https://instagram.com' in message.content:
             await message.channel.send(prefix + message.content.replace('https://instagram.com', 'https://ddinstagram.com'), silent=True)
+        if 'https://clips.twitch.tv' in message.content:
+            await message.channel.send(prefix + message.content + "?ntmtwitch", silent=True)
             await message.delete()
         low = message.content.lower()
         if is_banlisted(low):
