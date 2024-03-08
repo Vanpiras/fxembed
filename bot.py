@@ -1,6 +1,7 @@
 import os
 import random
 import discord
+import re
 
 f = open('.token')
 token = f.read().strip()
@@ -24,7 +25,12 @@ class DiscordClient(discord.Client):
             return
         prefix = f"<@{message.author.id}> sent:\n" 
         if 'https://twitter.com' in message.content:
-            await message.channel.send(prefix + message.content.replace('https://twitter.com', 'https://vxtwitter.com'), silent=True)
+            if re.match("https:\/\/twitter.com\/(.*\/)+", message.content):
+                await message.channel.send(prefix + message.content.replace('https://twitter.com', 'https://vxtwitter.com'), silent=True)
+            await message.delete()
+        if 'https://x.com' in message.content:
+            if re.match("https:\/\/x.com\/(.*\/)+", message.content):
+                await message.channel.send(prefix + message.content.replace('https://x.com', 'https://fixvx.com'), silent=True)
             await message.delete()
         if 'https://vm.tiktok.com' in message.content:
             await message.channel.send(prefix + message.content.replace('https://vm.tiktok.com', 'https://vm.vxtiktok.com'), silent=True)
