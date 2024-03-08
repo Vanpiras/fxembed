@@ -27,11 +27,11 @@ class DiscordClient(discord.Client):
         if 'https://twitter.com' in message.content:
             if re.match("https:\/\/twitter.com\/(.*\/)+", message.content):
                 await message.channel.send(prefix + message.content.replace('https://twitter.com', 'https://vxtwitter.com'), silent=True)
-            await message.delete()
+                await message.delete()
         if 'https://x.com' in message.content:
             if re.match("https:\/\/x.com\/(.*\/)+", message.content):
                 await message.channel.send(prefix + message.content.replace('https://x.com', 'https://fixvx.com'), silent=True)
-            await message.delete()
+                await message.delete()
         if 'https://vm.tiktok.com' in message.content:
             await message.channel.send(prefix + message.content.replace('https://vm.tiktok.com', 'https://vm.vxtiktok.com'), silent=True)
             await message.delete()
