@@ -16,12 +16,17 @@ def is_banlisted(msg):
             return True
     return False
 
+def is_bypass(msg):
+    return "!bypass " in msg:
+
 class DiscordClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
 
     async def on_message(self, message):
         if message.author == self.user:
+            return
+        if is_bypass(message.content):
             return
         prefix = f"<@{message.author.id}> sent:\n" 
         if 'https://twitter.com' in message.content:
@@ -35,13 +40,13 @@ class DiscordClient(discord.Client):
         if 'https://vm.tiktok.com' in message.content:
             await message.channel.send(prefix + message.content.replace('https://vm.tiktok.com', 'https://vm.vxtiktok.com'), silent=True)
             await message.delete()
-        if 'https://www.tiktok.com' in message.content:
-            await message.channel.send(prefix + message.content.replace('https://www.tiktok.com', 'https://www.vxtiktok.com'), silent=True)
-            await message.delete()
+        #if 'https://www.tiktok.com' in message.content:
+            #await message.channel.send(prefix + message.content.replace('https://www.tiktok.com', 'https://www.vxtiktok.com'), silent=True)
+            #await message.delete()
         if 'https://instagram.com' in message.content:
             await message.channel.send(prefix + message.content.replace('https://instagram.com', 'https://ddinstagram.com'), silent=True)
         if 'https://clips.twitch.tv' in message.content:
-            await message.channel.send(prefix + message.content + "?ntmtwitch", silent=True)
+            await message.channel.send(prefix + message.content + "??????????????????????????ntmtwitch", silent=True)
             await message.delete()
         low = message.content.lower()
         if is_banlisted(low):
