@@ -17,7 +17,7 @@ def is_banlisted(msg):
     return False
 
 def is_bypass(msg):
-    return "!bypass " in msg:
+    return "!bypass " in msg
 
 class DiscordClient(discord.Client):
     async def on_ready(self):
