@@ -48,8 +48,8 @@ class DiscordClient(discord.Client):
                 await message.channel.send(prefix + message.content.replace('https://www.reddit.com', 'https://www.vxreddit.com'), silent=True)
                 await message.delete()
         if 'https://instagram.com' in message.content:
-            await message.channel.send(prefix + message.content.replace('https://instagram.com', 'https://ddinstagram.com'), silent=True)
-                await message.delete()
+            await message.channel.send(prefix + message.content.replace('https://instagram.com', 'https://kkinstagram.com'), silent=True)
+            await message.delete()
         if 'https://clips.twitch.tv' in message.content:
             await message.channel.send(prefix + message.content + "??????????????????????????ntmtwitch", silent=True)
             await message.delete()
