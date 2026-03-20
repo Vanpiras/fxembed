@@ -47,8 +47,8 @@ class DiscordClient(discord.Client):
             if re.match("https:\/\/www.reddit.com\/(.*\/)+", message.content):
                 await message.channel.send(prefix + message.content.replace('https://www.reddit.com', 'https://www.vxreddit.com'), silent=True)
                 await message.delete()
-        if 'https://instagram.com' in message.content:
-            await message.channel.send(prefix + message.content.replace('https://instagram.com', 'https://kkinstagram.com'), silent=True)
+        if 'https://www.instagram.com' in message.content:
+            await message.channel.send(prefix + message.content.replace('https://www.instagram.com', 'https://www.kkinstagram.com'), silent=True)
             await message.delete()
         if 'https://clips.twitch.tv' in message.content:
             await message.channel.send(prefix + message.content + "??????????????????????????ntmtwitch", silent=True)
